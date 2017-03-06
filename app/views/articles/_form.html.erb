@@ -1,0 +1,30 @@
+<%= form_for @article do |f| %>
+  <% if @article.errors.any? %>
+<%# 这个if判断用来检测是否存在错误 %>
+<%# <%=form_for @article do |f| %>实例变量@article所处理资源的来源 f用来表示formbuilder对象 %>
+<%# 提交表单后，其中的字段以参数的形式传递给 Rails。这些参数可以在控制器的动作中使用 %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@article.errors.count, "error") %> prohibited
+      this article from being saved:</h2>
+    <ul>
+    <% @article.errors.full_messages.each do |msg| %>
+	<%# .errors.full_messages.each用于显示具体的错误信息 %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <p>
+    <%= f.label :标题 %>
+    <%= f.text_field :title %>
+  </p>
+ 
+  <div>
+    <%= f.label :博客内容 %>
+    <%= f.text_area :text %>
+  </div>
+ 
+  <p>
+    <%= f.submit :创建博客 %>
+  </p>
+<% end %>

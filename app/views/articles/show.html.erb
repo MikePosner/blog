@@ -1,0 +1,20 @@
+<p>
+  <strong>Title:</strong>
+  <%# 从实例变量@article获得数据 %>
+  <%= @article.title %>
+</p>
+ 
+<p>
+  <strong>Text:</strong>
+  <%= @article.text %>
+</p>
+ 
+<h2>当前文章评论</h2>
+<%= render @article.comments %>
+ 
+<h2>添加评论</h2>
+<%= render "comments/form" %>
+ 
+<%# 从rake routes 可知edit_article对应的是article的edit方法%>
+<%= link_to '修改文章', edit_article_path(@article) %> |
+<%= link_to '返回文章列表', articles_path %>
